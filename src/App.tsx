@@ -8,13 +8,29 @@ import {
   AiOutlineShrink,
   AiOutlineClose
 } from 'react-icons/ai'
-import reactLogo from './assets/react.svg'
 import viteLogo from './public/vite.svg'
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+// Access your API key (see "Set up your API key" above)
+const genAI = new GoogleGenerativeAI('AIzaSyBIYhVsrLK-r_A_rDg6sX80JfL0WyvXOkc');
+
+  // For text-only input, use the gemini-pro model
+  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+
 
 function App() {
 
   const [isActive, setIsActive] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [messages, setMessages] = useState([]);
+
+  const getRespose = async (query: string) => {
+    const result = await model.generateContent(query);
+    const response = await result.response;
+    const text = response.text();
+    setMessages((prevArray) => [...prevArray, { message: query, sender: 'client' }]);
+    setMessages((prevArray) => [...prevArray, { message: text, sender: 'bot' }]);
+  }
 
   return (
     <div className="gemini-bot">
@@ -45,7 +61,7 @@ function App() {
             </header>
               <div className="chat">
                 {
-                  chat.map(({ message, sender }) => {
+                  messages.map(({ message, sender }) => {
                     return (
                       <Message
                         message={message}
@@ -58,7 +74,12 @@ function App() {
               </div>
               <footer>
                 <div className="input-container">
-                  <input className="input field" type="text" placeholder="Send a message..." />
+                  <input className="input field" type="text" placeholder="Send a message..." onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                      getRespose(event.currentTarget.value);
+                      event.currentTarget.value = '';
+                    }
+                  }}/>
                 </div>
               </footer>
           </div>

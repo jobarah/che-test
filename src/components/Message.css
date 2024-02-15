@@ -107,12 +107,12 @@ p[class^="message"].emoji::before {
   margin-top: 1rem !important;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   p.left::after, p.right::after {
     background-color: #101010;
   }
 }
-
+ */
 
 
 
