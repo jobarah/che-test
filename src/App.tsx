@@ -26,15 +26,24 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const messesagesRef = useRef(null);
+  const messesagesRef = useRef<null | HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   messesagesRef.current?.scrollIntoView({behavior: "smooth", block:"end"})
+  // }, [messages.length]);
+
+  useEffect(() => {
+    messesagesRef.current?.scrollIntoView({behavior: "smooth", block:"end"})
+    console.log('this code ran now');
+  }, [messages]);
 
   const getRespose = async (query: string) => {
+    setMessages((prevArray) => [...prevArray, { message: query, sender: 'client' }]);
     setLoading(true);
     const result = await model.generateContent(query);
     const response = await result.response;
     setLoading(false);
     const text = response.text();
-    setMessages((prevArray) => [...prevArray, { message: query, sender: 'client' }]);
     setMessages((prevArray) => [...prevArray, { message: text, sender: 'bot' }]);
   }
 
@@ -66,6 +75,7 @@ function App() {
               </div>
             </header>
               <div className="chat">
+              <div ref={messesagesRef}>
                 {
                   messages.map(({ message, sender }) => {
                     return (
@@ -84,7 +94,9 @@ function App() {
                       <span className="circle scaling"></span>
                       <span className="circle scaling"></span>
                     </div>
-                  </div>}
+                  </div>
+                }
+              </div>
               </div>
               <footer>
                 <div className="input-container">
