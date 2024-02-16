@@ -23,10 +23,13 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getRespose = async (query: string) => {
+    setLoading(true);
     const result = await model.generateContent(query);
     const response = await result.response;
+    setLoading(false);
     const text = response.text();
     setMessages((prevArray) => [...prevArray, { message: query, sender: 'client' }]);
     setMessages((prevArray) => [...prevArray, { message: text, sender: 'bot' }]);
@@ -71,6 +74,14 @@ function App() {
                     );
                   })
                 }
+                {loading &&
+                  <div className="loader">
+                    <div className="typing">
+                      <span className="circle scaling"></span>
+                      <span className="circle scaling"></span>
+                      <span className="circle scaling"></span>
+                    </div>
+                  </div>}
               </div>
               <footer>
                 <div className="input-container">
