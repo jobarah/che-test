@@ -10,12 +10,13 @@ import {
 } from 'react-icons/ai'
 import viteLogo from './public/vite.svg'
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { useRef, useEffect } from "react";
 
 // Access your API key (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI('AIzaSyBIYhVsrLK-r_A_rDg6sX80JfL0WyvXOkc');
 
-  // For text-only input, use the gemini-pro model
-  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+// For text-only input, use the gemini-pro model
+const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const messesagesRef = useRef(null);
 
   const getRespose = async (query: string) => {
     setLoading(true);
