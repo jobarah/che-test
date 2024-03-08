@@ -59,7 +59,7 @@ function App() {
       {isActive && !isMinimized &&
         <>
           <div className="chat-bot">
-            <header className="header">
+            <header className="che-header">
               <div className="top-row">
                 <div className="action-btns">
                   <AiOutlineShrink  className="min-btn" onClick={() => setIsMinimized(!isMinimized)}/>
