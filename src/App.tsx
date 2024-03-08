@@ -13,7 +13,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useRef, useEffect } from "react";
 
 // Access your API key (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI('AIzaSyBIYhVsrLK-r_A_rDg6sX80JfL0WyvXOkc');
+const genAI = new GoogleGenerativeAI('AIzaSyClpplr_AhFemYfo8zyNcXQmHhipHbmw5A');
 
 // For text-only input, use the gemini-pro model
 const model = genAI.getGenerativeModel({ model: "gemini-pro"});
