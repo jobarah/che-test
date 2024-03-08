@@ -59,7 +59,7 @@ function App() {
       {isActive && !isMinimized &&
         <>
           <div className="chat-bot">
-            <header className="che-header">
+            <div className="che-header">
               <div className="top-row">
                 <div className="action-btns">
                   <AiOutlineShrink  className="min-btn" onClick={() => setIsMinimized(!isMinimized)}/>
@@ -73,7 +73,7 @@ function App() {
                   <div className="rep-details">Virtual Assistant</div>
                 </div>
               </div>
-            </header>
+            </div>
               <div className="chat">
               <div ref={messesagesRef}>
                 {
