@@ -57,7 +57,7 @@
 }
 
 .max-btn {
-margin-left: auto;
+  margin-left: auto;
 }
 
 .che-header {
@@ -107,7 +107,7 @@ margin-left: auto;
   font-size: 15px;
   line-height: 17px;
 }
-}
+
 
 .rep-details {
   font-weight: bold;
@@ -221,4 +221,59 @@ margin-left: auto;
     color: #fff;
   }
 } */
+
+@media screen {
+  width: 90%;
+    height: 100%;
+}
+
+  @media only screen and (min-width: 600px) {
+    .chat-bot {
+      width: 90%;
+      height: 100%;
+    }
+    .chat-with-us {
+      width: 200px;
+      height: 200px;
+
+      svg {
+        height: 3em;
+        width: 3em;
+      }
+    }
+    .che-header {
+      h3 {
+        margin-top: 40px;
+        font-size: 57px;
+      }
+    }
+    .rep-details-container {
+      font-size: 50px;
+      line-height: normal;
+    }
+    body {
+      background-color: lightblue;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .field {
+      font-size: 50px;
+      height: 150px;
+    }
+
+    .action-btns {
+      font-size: 50px;
+    }
+
+    .bubble {
+      // max-width: auto;
+      padding: 7px 1.5px;
+      font-size: 50px;
+    }
+  }
 }
