@@ -223,13 +223,23 @@
 } */
 
   @media only screen and (max-width: 600px) {
+
+    top: -15px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    /* background: red; */
+    background-color: rgba(0, 0, 0, 0.7);
+
     .chat-bot {
       width: 90%;
       height: 100%;
     }
     .chat-with-us {
-      width: 200px;
-      height: 200px;
+      width: 100px;
+      height: 100px;
 
       svg {
         height: 3em;
@@ -269,6 +279,17 @@
       // max-width: auto;
       padding: 7px 1.5px;
       font-size: 50px;
+    }
+
+    #block-yui_3_17_2_1_1709923319499_2916 {
+      top: -15px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 1000;
+      left: 0;
+      /* background: red; */
+      background-color: rgba(0, 0, 0, 0.7);
     }
   }
 }
